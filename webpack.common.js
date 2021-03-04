@@ -4,18 +4,31 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/index.js'],
   output: {
-    filename: 'solid-comment.js',
-    globalObject: 'this',
-    library: 'SolidComment',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'solid-comment.js'
+    // globalObject: 'this',
+    // library: 'SolidComment',
+    // libraryTarget: 'var',
+    // umdNamedDefine: true,
+    // libraryExport: 'default'
   },
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
