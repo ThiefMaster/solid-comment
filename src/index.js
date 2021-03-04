@@ -9,7 +9,7 @@ import Comment from './models/comment'
 
 export class SolidComment {
   constructor (configuration) {
-    console.log('Solid Comment loaded')
+    console.log('Solid Comment loaded2')
     addObjectToConfig(configuration)
     addToConfig('appName', 'Solid-Comment')
     addToConfig('resourceContainerPath', `solid-comment/${configuration.solidCommentId}`)
@@ -24,11 +24,13 @@ export class SolidComment {
   }
 
   async initApp () {
+    console.log('SolidComment.initApp3')
     const app = new App()
     await app.boot()
   }
 
   setComments (comments) {
+    console.log('SolidComment.setComments')
     addToConfig('comments', comments)
     Comment.all()
   }

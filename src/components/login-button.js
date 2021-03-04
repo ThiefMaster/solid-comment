@@ -8,7 +8,9 @@ export default class LoginButton extends Component {
       store,
       element: document.querySelector('#sc-solid-button-login')
     })
+    console.log('LoginButton init')
     this.element.onclick = async () => {
+      console.log('LoginButton click')
       const solidClient = new SolidClient()
       const session = store.state.session.data
 

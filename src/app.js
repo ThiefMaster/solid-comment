@@ -8,6 +8,7 @@ export default class App {
 
   // We still need to click on login after refresh
   async boot () {
+    console.log('app.boot')
     this.solidClient = new SolidClient()
     await this.solidClient.checkSession()
   }
